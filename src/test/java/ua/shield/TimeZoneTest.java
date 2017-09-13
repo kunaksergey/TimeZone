@@ -103,12 +103,6 @@ public class TimeZoneTest {
         Assert.assertEquals(Message.getBundle().getString("message.night"), salut.getSalutation());
     }
 
-    // set local and we don't  have propertie file for one
-    @Test
-    public void testRightLocal() {
-
-        }
-
     //there is zone for city "New York"
     @Test
     public void testZoneCityHasNewYourk() {
