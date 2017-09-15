@@ -23,7 +23,7 @@ public class TimeZoneTest {
     public void testTimeMorningStart() {
         LocalTime lt = LocalTime.of(6, 0);
         Message message = new Message();
-        Message.Salut salut = message.getSalutByTime(lt);
+        Salut salut = message.getSalutByTime(lt);
         Assert.assertEquals(Message.getBundle().getString("message.morning"), salut.getSalutation());
 
     }
@@ -34,7 +34,7 @@ public class TimeZoneTest {
     public void testTimeMorningMiddle() {
         LocalTime lt = LocalTime.of(7, 45);
         Message message = new Message();
-        Message.Salut salut = message.getSalutByTime(lt);
+        Salut salut = message.getSalutByTime(lt);
         Assert.assertEquals(Message.getBundle().getString("message.morning"), salut.getSalutation());
 
     }
@@ -46,7 +46,7 @@ public class TimeZoneTest {
     public void testTimeAfternoonStart() {
         LocalTime lt = LocalTime.of(9, 0);
         Message message = new Message();
-        Message.Salut salut = message.getSalutByTime(lt);
+        Salut salut = message.getSalutByTime(lt);
         Assert.assertEquals(Message.getBundle().getString("message.afternoon"), salut.getSalutation());
 
     }
@@ -57,7 +57,7 @@ public class TimeZoneTest {
     public void testTimeAfternoonMiddle() {
         LocalTime lt = LocalTime.of(14, 0);
         Message message = new Message();
-        Message.Salut salut = message.getSalutByTime(lt);
+        Salut salut = message.getSalutByTime(lt);
         Assert.assertEquals(Message.getBundle().getString("message.afternoon"), salut.getSalutation());
 
     }
@@ -68,7 +68,7 @@ public class TimeZoneTest {
     public void testTimeEveningStart() {
         LocalTime lt = LocalTime.of(19, 0);
         Message message = new Message();
-        Message.Salut salut = message.getSalutByTime(lt);
+        Salut salut = message.getSalutByTime(lt);
         Assert.assertEquals(Message.getBundle().getString("message.evening"), salut.getSalutation());
     }
 
@@ -78,7 +78,7 @@ public class TimeZoneTest {
     public void testTimeEveningMiddle() {
         LocalTime lt = LocalTime.of(21, 45);
         Message message = new Message();
-        Message.Salut salut = message.getSalutByTime(lt);
+        Salut salut = message.getSalutByTime(lt);
         Assert.assertEquals(Message.getBundle().getString("message.evening"), salut.getSalutation());
     }
 
@@ -89,7 +89,7 @@ public class TimeZoneTest {
     public void testTimeNightStart() {
         LocalTime lt = LocalTime.of(23, 0);
         Message message = new Message();
-        Message.Salut salut = message.getSalutByTime(lt);
+        Salut salut = message.getSalutByTime(lt);
         Assert.assertEquals(Message.getBundle().getString("message.night"), salut.getSalutation());
     }
 
@@ -99,7 +99,7 @@ public class TimeZoneTest {
     public void testTimeNightMiddle() {
         LocalTime lt = LocalTime.of(4, 0);
         Message message = new Message();
-        Message.Salut salut = message.getSalutByTime(lt);
+        Salut salut = message.getSalutByTime(lt);
         Assert.assertEquals(Message.getBundle().getString("message.night"), salut.getSalutation());
     }
 

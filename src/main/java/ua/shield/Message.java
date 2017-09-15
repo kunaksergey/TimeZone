@@ -3,7 +3,6 @@ package ua.shield;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -29,40 +28,31 @@ public class Message {
     }
 
     Salut getSalutByTime(LocalTime localTime) {
-        Optional<Salut> first = salutList.stream()
+//        Optional<Salut> first = salutList.stream()
+//                .filter(e -> {
+//                            if (e.getStart().toSecondOfDay() > e.getEnd().toSecondOfDay()) {
+//                                return e.getStart().toSecondOfDay() >= localTime.toSecondOfDay() || e.getStart().toSecondOfDay() < localTime.toSecondOfDay();
+//                            } else
+//                                return e.getStart().toSecondOfDay() <= localTime.toSecondOfDay() && e.getEnd().toSecondOfDay() > localTime.toSecondOfDay();
+//                        }
+//                )
+//                .findFirst();
+//        return first.isPresent() ? first.get() : new Salut(getBundle().getString("message.errorDateRange"));
+
+        //changed on functional style
+        return salutList.stream()
                 .filter(e -> {
-                            if (e.start.toSecondOfDay() > e.end.toSecondOfDay()) {
-                                return e.start.toSecondOfDay() >= localTime.toSecondOfDay() || e.end.toSecondOfDay() < localTime.toSecondOfDay();
+                            if (e.getStart().toSecondOfDay() > e.getEnd().toSecondOfDay()) {
+                                return e.getStart().toSecondOfDay() >= localTime.toSecondOfDay() || e.getStart().toSecondOfDay() < localTime.toSecondOfDay();
                             } else
-                                return e.start.toSecondOfDay() <= localTime.toSecondOfDay() && e.end.toSecondOfDay() > localTime.toSecondOfDay();
+                                return e.getStart().toSecondOfDay() <= localTime.toSecondOfDay() && e.getEnd().toSecondOfDay() > localTime.toSecondOfDay();
                         }
                 )
-                .findFirst();
-        return first.isPresent() ? first.get() : new Salut(getBundle().getString("message.error"));
+                .findFirst().orElse(new Salut(getBundle().getString("message.errorDateRange")));
     }
 
     public static ResourceBundle getBundle() {
         return ResourceBundle.getBundle("message", new UTF8Control());
-    }
-
-    public class Salut {
-        private String salutation;
-        private LocalTime start;
-        private LocalTime end;
-
-        Salut(String salutation) {
-            this.salutation = salutation;
-        }
-
-        Salut(String salutation, LocalTime start, LocalTime end) {
-            this.salutation = salutation;
-            this.start = start;
-            this.end = end;
-        }
-
-        String getSalutation() {
-            return salutation;
-        }
     }
 
     String getMessageByZoneId() {
