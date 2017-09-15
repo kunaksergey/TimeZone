@@ -17,7 +17,6 @@ public class Message {
         salutList.add(new Salut(getBundle().getString("message.afternoon"), LocalTime.of(9, 0), LocalTime.of(19, 0)));
         salutList.add(new Salut(getBundle().getString("message.evening"), LocalTime.of(19, 0), LocalTime.of(23, 0)));
         salutList.add(new Salut(getBundle().getString("message.night"), LocalTime.of(23, 0), LocalTime.of(6, 0)));
-
     }
 
     public Message() {

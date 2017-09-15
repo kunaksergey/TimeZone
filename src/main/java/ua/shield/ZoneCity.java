@@ -49,17 +49,15 @@ public class ZoneCity {
     }
 
     private ZoneId zoneIdByCity(String cityName){
-        Optional<String> first = ZoneId.getAvailableZoneIds().stream()
+       return ZoneId.of( ZoneId.getAvailableZoneIds().stream()
                 .filter(e -> e.subSequence(e.indexOf("/") + 1,e.length()).equals(cityName))
-                .findFirst();
-        return (first.isPresent())?ZoneId.of(first.get()):ZoneId.of("GMT");
-    }
+                .findFirst().orElse("GMT"));
+        }
 
     private ZoneId zoneIdByCity(String cityName,String timeZone){
-        Optional<String> first = ZoneId.getAvailableZoneIds().stream()
+        return  ZoneId.of(ZoneId.getAvailableZoneIds().stream()
                 .filter(e -> e.equals(timeZone))
-                .findFirst();
-    return (first.isPresent())?ZoneId.of(first.get()):zoneIdByCity(cityName);
+                .findFirst().orElse(zoneIdByCity(cityName).getId()));
     }
 
     public LocalTime getLocalTimeZone(){
