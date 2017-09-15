@@ -23,7 +23,7 @@ public class Main {
         //check if we have at least one argument
         if (args.length == 0) {
             System.out.println(Message.getBundle().getString("message.errorEnteredArgument"));
-            logger.debug("User didn't enter at least argument");
+            logger.debug("User didn't enter any argument");
             System.exit(0);
         }
 
