@@ -154,7 +154,4 @@ public class TimeZoneTest {
         Assert.assertEquals("GMT",zoneCity.getZoneId().getId());
     }
 
-
-
-
 }
